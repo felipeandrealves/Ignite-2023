@@ -1,19 +1,17 @@
 # Fundamentos ReactJs
 
-Primeiro projeto desenvolvido durando as aulas do curso onde vários temas são abordados e trabalhados desde os fundamentos até colocar a mão na massa, começamos o projeto usando a ferramente [Vite](https://vitejs.dev/) que é muito poderosa e auxilia muito na criação de desenvolvimento de projetos, nas aulas também e abordado um pouco mais a fundo o funcionamento do ReactJs em si apresentando conceitos importantes como `SPA's`, `SSR`, `estados`, etc.
-
-Um começo cheio de novidades para quem vem do total zero e com certeza finalizo o primeiro modulo com mais conhecimento do que entrei.
+Este projeto e um aprimoramento do primeiro projeto desenvolvido no curso usando `Typescript`.
 
 # 🚀 Getting Started
 
 1. Clone o projeto e entre na pasta
 
 ```bash
-git clone https://github.com/felipeandrealves/01-fundamentos-reactjs.git
+git clone https://github.com/felipeandrealves/01-fundamentos-reactjs-ts.git
 //OR using SSH
-git clone git@github.com:felipeandrealves/01-fundamentos-reactjs.git
+git clone git@github.com:felipeandrealves/01-fundamentos-reactjs-ts.git
 
-cd 01-fundamentos-reactjs
+cd 01-fundamentos-reactjs-ts
 ```
 
 2. Instale suas dependencias
