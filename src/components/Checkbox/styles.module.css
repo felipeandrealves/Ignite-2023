@@ -1,0 +1,58 @@
+.checkboxContainer input[type='checkbox'] {
+  display: none;
+}
+
+.checkboxContainer label {
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.labelUnchecked {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.labelUnchecked::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+  opacity: 0.2;
+}
+
+.labelUnchecked:hover::before {
+  background: var(--blue-500);
+}
+
+.labelUnchecked::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  outline: 2px solid var(--blue-500);
+}
+
+.labelChecked {
+  background: var(--purple-700);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.labelChecked:hover {
+  background: var(--purple-500);
+}
