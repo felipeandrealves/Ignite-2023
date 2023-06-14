@@ -1,24 +1,75 @@
-import { MapPin, ShoppingCart } from 'phosphor-react'
+import { ArchiveBox, Coffee, MapPin, ShoppingCart, Timer } from 'phosphor-react'
+import { Link } from 'react-router-dom'
 
-import CoffeDeliveryLogo from '../../common/assets/images/coffee-delivery-logo.svg'
+import {
+  HeaderContainer,
+  Location,
+  IntroSectionContainer,
+  ShoppingCartButton,
+  AdvantagesItems,
+  Intro,
+} from './styles'
+import CoffeeDeliveryLogo from '../../common/assets/images/CoffeeDeliveryLogo.svg'
+import CoffeeCup from '../../common/assets/images/CoffeeCup.svg'
 
 export const Home = () => {
   return (
     <div>
-      <header>
-        <img src={CoffeDeliveryLogo} alt="" />
+      <HeaderContainer>
+        <Link to="/">
+          <img src={CoffeeDeliveryLogo} alt="" />
+        </Link>
 
         <nav>
-          <span>
-            <MapPin size={24} />
-            Porto Alegre, RS
-          </span>
+          <Location>
+            <MapPin size={22} weight="fill" />
+            <p>Porto Alegre, RS</p>
+          </Location>
 
-          <button>
-            <ShoppingCart size={24} />
-          </button>
+          <ShoppingCartButton>
+            <ShoppingCart size={22} weight="fill" />
+          </ShoppingCartButton>
         </nav>
-      </header>
+      </HeaderContainer>
+
+      <IntroSectionContainer>
+        <Intro>
+          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+
+          <p>
+            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
+            hora
+          </p>
+
+          <AdvantagesItems>
+            <div>
+              <ShoppingCart weight="fill" />
+
+              <p>Compra simples e segura</p>
+            </div>
+
+            <div>
+              <ArchiveBox weight="fill" />
+
+              <p>Embalagem mantém o café intacto</p>
+            </div>
+
+            <div>
+              <Timer weight="fill" />
+
+              <p>Entrega rápida e rastreada</p>
+            </div>
+
+            <div>
+              <Coffee weight="fill" />
+
+              <p>O café chega fresquinho até você</p>
+            </div>
+          </AdvantagesItems>
+        </Intro>
+
+        <img src={CoffeeCup} alt="" />
+      </IntroSectionContainer>
     </div>
   )
 }
