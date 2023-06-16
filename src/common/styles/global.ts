@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body {
     -webkit-font-smoothing: antialiased;
+    background: #fafafa;
   }
 
   body, input, button, textarea {
