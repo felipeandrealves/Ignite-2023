@@ -1,33 +1,76 @@
 import { ShoppingCart } from 'phosphor-react'
+import { useState } from 'react'
 
 import {
   CoffeeCardContainer,
   CoffeeCardFooter,
   CoffeeCardFooterBuyCoffeeButton,
+  CoffeeLabels,
 } from './styles'
+import {
+  Coffee,
+  useCoffeeContext,
+} from '../../../../common/contexts/CoffeeContext'
 import { QuantityCounter } from '../../../../common/components/QuantityCounter'
-import CoffeeSample from '../../../../common/assets/images/coffees/Image.svg'
 
-export const CoffeeCard = () => {
+interface CoffeeCardProps extends Coffee {}
+
+export const CoffeeCard = ({
+  type,
+  labels,
+  description,
+  price,
+  ...rest
+}: CoffeeCardProps) => {
+  const { addCoffeeToCart } = useCoffeeContext()
+
+  const [coffeeAmount, setCoffeeAmount] = useState(1)
+
+  const handleChangeCoffeeAmount = (amount: number) => {
+    setCoffeeAmount(amount)
+  }
+
+  const handleAddCoffeeToCart = () => {
+    addCoffeeToCart({
+      type,
+      labels,
+      description,
+      price,
+      amount: coffeeAmount,
+      ...rest,
+    })
+
+    setCoffeeAmount(1)
+  }
+
   return (
     <CoffeeCardContainer>
-      <img src={CoffeeSample} alt="" />
+      <img src={`/coffees/Type=${type}.svg`} alt="" />
 
-      <span>Tradicional</span>
+      <CoffeeLabels>
+        {labels.map((label) => (
+          <span key={label} className="label">
+            {label}
+          </span>
+        ))}
+      </CoffeeLabels>
 
-      <h1>Expresso Tradicional</h1>
+      <h1>{type}</h1>
 
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <p>{description}</p>
 
       <CoffeeCardFooter>
         <p>
-          R$ <span>9,90</span>
+          R$ <span>{price}</span>
         </p>
 
         <div>
-          <QuantityCounter />
+          <QuantityCounter
+            amount={coffeeAmount}
+            changeAmount={handleChangeCoffeeAmount}
+          />
 
-          <CoffeeCardFooterBuyCoffeeButton>
+          <CoffeeCardFooterBuyCoffeeButton onClick={handleAddCoffeeToCart}>
             <ShoppingCart size={22} weight="fill" />
           </CoffeeCardFooterBuyCoffeeButton>
         </div>
