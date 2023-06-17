@@ -1,13 +1,22 @@
+import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import { Router } from './Router'
+
+import { CoffeeContextProvider } from './common/contexts/CoffeeContext'
+import { defaultTheme } from './common/styles/theme/default'
+// import { darkTheme } from './common/styles/theme/dark'
 import { GlobalStyle } from './common/styles/global'
+import { Router } from './Router'
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <Router />
+    <ThemeProvider theme={defaultTheme}>
+      <BrowserRouter>
+        <CoffeeContextProvider>
+          <Router />
+        </CoffeeContextProvider>
 
-      <GlobalStyle />
-    </BrowserRouter>
+        <GlobalStyle />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
