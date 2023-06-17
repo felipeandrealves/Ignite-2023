@@ -1,115 +1,70 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-  Trash,
-} from 'phosphor-react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 
 import {
   CheckoutContainer,
   CheckoutForm,
   CheckoutOrder,
-  CoffeeCard,
-  CoffeeDescription,
   ConfirmOrderButton,
   FormCard,
-  FormCardForm,
-  FormCardGroup,
-  FormCardHeader,
-  FormCardHeaderTitle,
-  FormInput,
   PaymentList,
-  Price,
   PriceOrderLabel,
   PriceOrderResume,
-  RemoveCoffeeButton,
 } from './styles'
+import { PaymentCoffeeCard } from './components/PaymentCoffeeCard'
+import { BuyCoffeeForm } from './components/BuyCoffeeForm'
+import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 
-import CoffeExample from '../../common/assets/images/coffees/Image.svg'
-import { QuantityCounter } from '../../common/components/QuantityCounter'
+const BuyCoffeeFormValidationSchema = zod.object({
+  address: zod.object({
+    street: zod.string().min(3, 'Rua inválida'),
+    number: zod.string().min(1, 'Número inválido'),
+    complement: zod.string().min(3, 'Complemento inválido'),
+    neighborhood: zod.string().min(3, 'Bairro inválido'),
+    city: zod.string().min(3, 'Cidade inválida'),
+    state: zod.string().min(2, 'Estado inválido'),
+    zipCode: zod.string().min(8, 'CEP inválido'),
+  }),
+  paymentType: zod.enum(['creditCard', 'debitCard', 'money']),
+})
+
+export type BuyCoffeeFormData = zod.infer<typeof BuyCoffeeFormValidationSchema>
 
 export const Checkout = () => {
+  const { coffeeCart } = useCoffeeContext()
+
+  const buyCoffeeForm = useForm<BuyCoffeeFormData>({
+    resolver: zodResolver(BuyCoffeeFormValidationSchema),
+    defaultValues: {
+      address: {
+        street: '',
+        number: '',
+        complement: '',
+        neighborhood: '',
+        city: '',
+        state: '',
+        zipCode: '',
+      },
+      paymentType: 'creditCard',
+    },
+  })
+
+  const { handleSubmit } = buyCoffeeForm
+
+  const handleCreateNewOrder = (data: BuyCoffeeFormData) => {
+    console.log(data)
+  }
+
   return (
     <CheckoutContainer>
-      <CheckoutForm>
+      <CheckoutForm action="" onSubmit={handleSubmit(handleCreateNewOrder)}>
         <CheckoutOrder>
           <p>Complete seu pedido</p>
 
-          <div className="addressAndPayment">
-            <FormCard>
-              <FormCardHeader>
-                <MapPinLine size={22} color="#C47F17" />
-
-                <FormCardHeaderTitle>
-                  <p>Endereço de Entrega</p>
-                  <span>Informe o endereço onde deseja receber seu pedido</span>
-                </FormCardHeaderTitle>
-              </FormCardHeader>
-
-              <FormCardForm>
-                <FormInput type="text" size={200} placeholder="CEP" />
-
-                <FormInput type="text" placeholder="Rua" />
-
-                <FormCardGroup grid="200px 1fr">
-                  <FormInput type="text" placeholder="Numero" />
-
-                  <FormInput type="text" placeholder="Complemento" />
-                </FormCardGroup>
-
-                <FormCardGroup grid="200px 1fr 60px">
-                  <FormInput type="text" placeholder="Bairro" />
-
-                  <FormInput type="text" placeholder="Cidade" />
-
-                  <FormInput type="text" placeholder="UF" />
-                </FormCardGroup>
-              </FormCardForm>
-            </FormCard>
-
-            <FormCard>
-              <FormCardHeader>
-                <CurrencyDollar size={22} color="#8047F8" />
-
-                <FormCardHeaderTitle>
-                  <p>Pagamento</p>
-
-                  <span>
-                    O pagamento é feito na entrega. Escolha a forma que deseja
-                    pagar
-                  </span>
-                </FormCardHeaderTitle>
-              </FormCardHeader>
-
-              <FormCardForm>
-                <FormCardGroup grid="1fr 1fr 1fr">
-                  <input
-                    defaultChecked
-                    type="radio"
-                    name="payment"
-                    id="credit-card"
-                  />
-                  <label htmlFor="credit-card">
-                    <CreditCard size={16} /> cartão de crédito
-                  </label>
-
-                  <input type="radio" name="payment" id="debit-card" />
-                  <label htmlFor="debit-card">
-                    <Bank size={16} />
-                    cartão de débito
-                  </label>
-
-                  <input type="radio" name="payment" id="money" />
-                  <label htmlFor="money">
-                    <Money size={16} />
-                    dinheiro
-                  </label>
-                </FormCardGroup>
-              </FormCardForm>
-            </FormCard>
-          </div>
+          <FormProvider {...buyCoffeeForm}>
+            <BuyCoffeeForm />
+          </FormProvider>
         </CheckoutOrder>
 
         <CheckoutOrder>
@@ -117,25 +72,13 @@ export const Checkout = () => {
 
           <FormCard variant="payment">
             <PaymentList>
-              <CoffeeCard>
-                <img src={CoffeExample} alt="Café" />
+              {coffeeCart.map((coffee) => (
+                <>
+                  <PaymentCoffeeCard />
 
-                <CoffeeDescription>
-                  <p>Expresso Tradicional</p>
-
-                  <div>
-                    <QuantityCounter />
-
-                    <RemoveCoffeeButton type="button">
-                      <Trash size={16} /> remover
-                    </RemoveCoffeeButton>
-                  </div>
-                </CoffeeDescription>
-
-                <Price>R$ 9,90</Price>
-              </CoffeeCard>
-
-              <div className="divider" />
+                  <div className="divider" />
+                </>
+              ))}
 
               <PriceOrderResume>
                 <PriceOrderLabel>
@@ -148,13 +91,15 @@ export const Checkout = () => {
                   <span>R$ 3,50</span>
                 </PriceOrderLabel>
 
-                <PriceOrderLabel total>
+                <PriceOrderLabel total="true">
                   <p>Total</p>
                   <span>R$ 33,20</span>
                 </PriceOrderLabel>
               </PriceOrderResume>
 
-              <ConfirmOrderButton>confirmar pedido</ConfirmOrderButton>
+              <ConfirmOrderButton type="submit">
+                confirmar pedido
+              </ConfirmOrderButton>
             </PaymentList>
           </FormCard>
         </CheckoutOrder>
