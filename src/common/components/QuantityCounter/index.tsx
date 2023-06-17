@@ -2,16 +2,24 @@ import { Minus, Plus } from 'phosphor-react'
 
 import { QuantityCounterContainer } from './styles'
 
-export const QuantityCounter = () => {
+interface QuantityCounterProps {
+  amount: number
+  changeAmount: (amount: number) => void
+}
+
+export const QuantityCounter = ({
+  amount,
+  changeAmount,
+}: QuantityCounterProps) => {
   return (
     <QuantityCounterContainer>
-      <button type="button">
+      <button type="button" onClick={() => changeAmount(amount - 1)}>
         <Minus size={14} weight="bold" />
       </button>
 
-      <p>1</p>
+      <p>{amount}</p>
 
-      <button type="button">
+      <button type="button" onClick={() => changeAmount(amount + 1)}>
         <Plus size={14} weight="bold" />
       </button>
     </QuantityCounterContainer>

@@ -7,7 +7,7 @@ export const QuantityCounterContainer = styled.div`
 
   height: 38px;
 
-  background: #e6e5e5;
+  background: ${({ theme }) => theme.colors['gray-400']};
   border-radius: 6px;
   padding: 0 0.5rem;
 
@@ -15,7 +15,7 @@ export const QuantityCounterContainer = styled.div`
 
   p {
     width: 20px;
-    color: #272221;
+    color: ${({ theme }) => theme.colors['gray-900']};
     line-height: 130%;
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
@@ -26,7 +26,7 @@ export const QuantityCounterContainer = styled.div`
     border: none;
     width: 14px;
     height: 14px;
-    color: #8047f8;
+    color: ${({ theme }) => theme.colors['purple-500']};
     background: transparent;
 
     display: flex;
@@ -40,7 +40,7 @@ export const QuantityCounterContainer = styled.div`
     transition: all 0.1s ease-in-out;
 
     &:hover {
-      color: #4b2995;
+      color: ${({ theme }) => theme.colors['purple-900']};
     }
   }
 `
