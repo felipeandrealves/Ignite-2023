@@ -30,12 +30,12 @@ export const IntroTitle = styled.div`
     font-size: 48px;
     font-weight: bold;
     line-height: 130%;
-    color: #272221;
+    color: ${({ theme }) => theme.colors['gray-900']};
   }
 
   > p {
     font-size: 20px;
-    color: #403937;
+    color: ${({ theme }) => theme.colors['gray-800']};
   }
 `
 
@@ -48,7 +48,7 @@ export const CoffeeListContainer = styled.div`
   padding: 2rem 10rem 0;
 
   h1 {
-    color: #403937;
+    color: ${({ theme }) => theme.colors['gray-800']};
     font-size: 2rem;
   }
 `
