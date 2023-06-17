@@ -5,12 +5,15 @@ import {
   Intro,
   IntroTitle,
 } from './styles'
+import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 import { AdvantageList } from './components/AdvantageList'
 import { CoffeeCard } from './components/CoffeeCard'
 
 import CoffeeCup from '../../common/assets/images/CoffeeCup.svg'
 
 export const Home = () => {
+  const { availableCoffees } = useCoffeeContext()
+
   return (
     <div>
       <IntroSectionContainer>
@@ -34,13 +37,9 @@ export const Home = () => {
         <h1>Nossos cafés</h1>
 
         <CoffeeList>
-          <CoffeeCard />
-
-          <CoffeeCard />
-
-          <CoffeeCard />
-
-          <CoffeeCard />
+          {availableCoffees.map((coffee) => (
+            <CoffeeCard key={coffee.id} {...coffee} />
+          ))}
         </CoffeeList>
       </CoffeeListContainer>
     </div>
