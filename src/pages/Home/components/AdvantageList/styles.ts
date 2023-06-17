@@ -9,10 +9,10 @@ export const AdvantagesList = styled.div`
 `
 
 const ADVANTAGE_COLORS = {
-  orange: '#C47F17',
-  gray: '#574F4D',
-  yellow: '#DBAC2C',
-  purple: '#8047F8',
+  orange: 'yellow-900',
+  gray: 'gray-700',
+  yellow: 'yellow-500',
+  purple: 'purple-500',
 } as const
 
 interface AdvantageProps {
@@ -28,13 +28,13 @@ export const Advantage = styled.div<AdvantageProps>`
     width: 32px;
     height: 32px;
     border-radius: 999px;
-    background: ${({ color }) => ADVANTAGE_COLORS[color]};
+    background: ${({ color, theme }) => theme.colors[ADVANTAGE_COLORS[color]]};
     display: flex;
     align-items: center;
     justify-content: center;
 
     svg {
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 
@@ -42,6 +42,6 @@ export const Advantage = styled.div<AdvantageProps>`
     font-family: 'Roboto', sans-serif;
     line-height: 130%;
     font-size: 16px;
-    color: #574f4d;
+    color: ${({ theme }) => theme.colors['gray-700']};
   }
 `
