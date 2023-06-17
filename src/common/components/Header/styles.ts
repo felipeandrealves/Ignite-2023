@@ -24,8 +24,8 @@ export const Location = styled.div`
   height: 38px;
 
   border-radius: 6px;
-  background: #ebe5f9;
-  color: #4b2995;
+  background: ${({ theme }) => theme.colors['purple-300']};
+  color: ${({ theme }) => theme.colors['purple-900']};
 
   padding: 0 0.5rem;
 
@@ -35,11 +35,15 @@ export const Location = styled.div`
   font-weight: 400;
 
   svg {
-    color: #8047f8;
+    color: ${({ theme }) => theme.colors['purple-500']};
   }
 `
 
-export const ShoppingCartButton = styled.button`
+interface ShoppingCartButtonProps {
+  amount: number
+}
+
+export const ShoppingCartButton = styled.button<ShoppingCartButtonProps>`
   border: none;
 
   width: 38px;
@@ -51,8 +55,32 @@ export const ShoppingCartButton = styled.button`
 
   border-radius: 6px;
 
-  background: #f1e9c9;
-  color: #c47f17;
+  background: ${({ theme }) => theme.colors['yellow-300']};
+  color: ${({ theme }) => theme.colors['yellow-900']};
 
   cursor: pointer;
+  position: relative;
+
+  &:before {
+    content: '${({ amount }) => amount}';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: -10px;
+    right: -10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+
+    background: ${({ theme }) => theme.colors['yellow-900']};
+    color: ${({ theme }) => theme.colors.white};
+
+    visibility: ${({ amount }) => (amount > 0 ? 'visible' : 'hidden')};
+  }
 `
