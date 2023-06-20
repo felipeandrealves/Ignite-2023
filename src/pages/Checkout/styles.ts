@@ -4,6 +4,25 @@ export const CheckoutContainer = styled.div`
   padding: 2.5rem 10rem;
 `
 
+export const EmptyCartMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h1 {
+    color: ${({ theme }) => theme.colors['gray-800']};
+    font-family: 'Roboto', sans-serif;
+    line-height: 130%;
+  }
+
+  p {
+    line-height: 130%;
+    color: ${({ theme }) => theme.colors['gray-700']};
+    font-size: 0.875rem;
+  }
+`
+
 export const CheckoutForm = styled.form`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -26,7 +45,7 @@ interface FormCardProps {
 }
 
 export const FormCard = styled.div<FormCardProps>`
-  background: #f3f2f2;
+  background: ${({ theme }) => theme.colors['gray-200']};
 
   border-radius: ${({ variant }) =>
     variant === 'payment' ? '6px 44px;' : '6px'};
@@ -44,14 +63,14 @@ export const FormCardHeader = styled.div`
 
 export const FormCardHeaderTitle = styled.div`
   p {
-    color: #403937;
+    color: ${({ theme }) => theme.colors['gray-800']};
     font-family: 'Roboto', sans-serif;
     line-height: 130%;
   }
 
   span {
     line-height: 130%;
-    color: #574f4d;
+    color: ${({ theme }) => theme.colors['gray-700']};
     font-size: 0.875rem;
   }
 `
@@ -75,8 +94,8 @@ export const FormCardGroup = styled.div<FormCardGroupProps>`
     display: none;
 
     &:checked + label {
-      border-color: #8047f8;
-      background: #ebe5f9;
+      border-color: ${({ theme }) => theme.colors['purple-500']};
+      background: ${({ theme }) => theme.colors['purple-300']};
     }
   }
 
@@ -88,8 +107,8 @@ export const FormCardGroup = styled.div<FormCardGroupProps>`
     line-height: 160%;
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
-    color: #574f4d;
-    background: #e6e5e5;
+    color: ${({ theme }) => theme.colors['gray-700']};
+    background: ${({ theme }) => theme.colors['gray-400']};
     border-radius: 6px;
     padding: 1rem;
     cursor: pointer;
@@ -97,19 +116,19 @@ export const FormCardGroup = styled.div<FormCardGroupProps>`
     border: 1px solid transparent;
 
     svg {
-      color: #8047f8;
+      color: ${({ theme }) => theme.colors['purple-500']};
     }
 
     &:hover {
-      background: #d7d5d5;
+      background: ${({ theme }) => theme.colors['gray-500']};
     }
   }
 `
 
 export const FormInput = styled.input`
-  background: #eeeded;
+  background: ${({ theme }) => theme.colors['gray-300']};
   padding: 0.75rem;
-  border: 1px solid #e6e5e5;
+  border: 1px solid ${({ theme }) => theme.colors['gray-400']};
   border-radius: 4px;
   outline: none;
 
@@ -120,11 +139,11 @@ export const FormInput = styled.input`
     `};
 
   &::placeholder {
-    color: #8d8686;
+    color: ${({ theme }) => theme.colors['gray-600']};
   }
 
   &:focus {
-    border-color: #c47f17;
+    border-color: ${({ theme }) => theme.colors['yellow-900']};
   }
 `
 
@@ -135,7 +154,7 @@ export const PaymentList = styled.div`
 
   .divider {
     height: 0px;
-    border: 1px solid #e6e5e5;
+    border: 1px solid ${({ theme }) => theme.colors['gray-400']};
   }
 `
 
@@ -155,7 +174,7 @@ export const PriceOrderLabel = styled.div<PriceOrderLabelProps>`
   align-items: center;
 
   font-family: 'Roboto', sans-serif;
-  color: #574f4d;
+  color: ${({ theme }) => theme.colors['gray-700']};
 
   ${({ total }) =>
     total &&
@@ -170,8 +189,8 @@ export const PriceOrderLabel = styled.div<PriceOrderLabelProps>`
 `
 
 export const ConfirmOrderButton = styled.button`
-  background: #dbac2c;
-  color: #fff;
+  background: ${({ theme }) => theme.colors['yellow-500']};
+  color: ${({ theme }) => theme.colors.white};
   padding: 0.75rem;
   border: none;
   border-radius: 6px;
@@ -186,6 +205,6 @@ export const ConfirmOrderButton = styled.button`
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    background: #c47f17;
+    background: ${({ theme }) => theme.colors['yellow-900']};
   }
 `
