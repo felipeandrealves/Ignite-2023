@@ -7,21 +7,30 @@ import {
   Price,
   RemoveCoffeeButton,
 } from './styles'
+import {
+  CoffeeCart,
+  useCoffeeContext,
+} from '../../../../common/contexts/CoffeeContext'
 import { QuantityCounter } from '../../../../common/components/QuantityCounter'
 
-export const PaymentCoffeeCard = () => {
-  const [coffeeAmount, setCoffeeAmount] = useState(1)
+export const PaymentCoffeeCard = ({ amount, type, price, id }: CoffeeCart) => {
+  const { removeCoffeeFromCart } = useCoffeeContext()
+  const [coffeeAmount, setCoffeeAmount] = useState(amount)
 
   const handleChangeCoffeeAmount = (amount: number) => {
     setCoffeeAmount(amount)
   }
 
+  const handleRemoveCoffee = () => {
+    removeCoffeeFromCart(id)
+  }
+
   return (
     <PaymentCoffeeCardContainer>
-      <img src="/coffees/Image.svg" alt="Café" />
+      <img src={`/coffees/Type=${type}.svg`} alt="Café" />
 
       <CoffeeDescription>
-        <p>Expresso Tradicional</p>
+        <p>{type}</p>
 
         <div>
           <QuantityCounter
@@ -29,13 +38,13 @@ export const PaymentCoffeeCard = () => {
             changeAmount={handleChangeCoffeeAmount}
           />
 
-          <RemoveCoffeeButton type="button">
+          <RemoveCoffeeButton type="button" onClick={handleRemoveCoffee}>
             <Trash size={16} /> remover
           </RemoveCoffeeButton>
         </div>
       </CoffeeDescription>
 
-      <Price>R$ 9,90</Price>
+      <Price>R$ {price}</Price>
     </PaymentCoffeeCardContainer>
   )
 }
