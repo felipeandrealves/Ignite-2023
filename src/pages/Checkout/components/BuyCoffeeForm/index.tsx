@@ -38,13 +38,14 @@ export const BuyCoffeeForm = () => {
             type="text"
             size={200}
             placeholder="CEP"
-            error={!!formState.errors.address?.zipCode}
+            error={formState.errors.address?.zipCode?.message}
             {...register('address.zipCode')}
           />
 
           <FormInput
             type="text"
             placeholder="Rua"
+            error={formState.errors.address?.street?.message}
             {...register('address.street')}
           />
 
@@ -52,12 +53,14 @@ export const BuyCoffeeForm = () => {
             <FormInput
               type="text"
               placeholder="Numero"
+              error={formState.errors.address?.number?.message}
               {...register('address.number')}
             />
 
             <FormInput
               type="text"
               placeholder="Complemento"
+              error={formState.errors.address?.complement?.message}
               {...register('address.complement')}
             />
           </FormCardGroup>
@@ -66,18 +69,21 @@ export const BuyCoffeeForm = () => {
             <FormInput
               type="text"
               placeholder="Bairro"
+              error={formState.errors.address?.neighborhood?.message}
               {...register('address.neighborhood')}
             />
 
             <FormInput
               type="text"
               placeholder="Cidade"
+              error={formState.errors.address?.city?.message}
               {...register('address.city')}
             />
 
             <FormInput
               type="text"
               placeholder="UF"
+              error={formState.errors.address?.state?.message}
               {...register('address.state')}
             />
           </FormCardGroup>
