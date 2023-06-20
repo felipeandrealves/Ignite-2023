@@ -12,9 +12,9 @@ import {
   PriceOrderLabel,
   PriceOrderResume,
 } from './styles'
+import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 import { PaymentCoffeeCard } from './components/PaymentCoffeeCard'
 import { BuyCoffeeForm } from './components/BuyCoffeeForm'
-import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 
 const BuyCoffeeFormValidationSchema = zod.object({
   address: zod.object({
@@ -32,7 +32,7 @@ const BuyCoffeeFormValidationSchema = zod.object({
 export type BuyCoffeeFormData = zod.infer<typeof BuyCoffeeFormValidationSchema>
 
 export const Checkout = () => {
-  const { coffeeCart } = useCoffeeContext()
+  const { coffeeCart, totalCartValue } = useCoffeeContext()
 
   const buyCoffeeForm = useForm<BuyCoffeeFormData>({
     resolver: zodResolver(BuyCoffeeFormValidationSchema),
@@ -74,7 +74,7 @@ export const Checkout = () => {
             <PaymentList>
               {coffeeCart.map((coffee) => (
                 <>
-                  <PaymentCoffeeCard />
+                    <PaymentCoffeeCard {...coffee} />
 
                   <div className="divider" />
                 </>
@@ -83,7 +83,7 @@ export const Checkout = () => {
               <PriceOrderResume>
                 <PriceOrderLabel>
                   <p>Total de itens</p>
-                  <span>R$ 29,70</span>
+                    <span>R$ {totalCartValue}</span>
                 </PriceOrderLabel>
 
                 <PriceOrderLabel>
@@ -93,7 +93,7 @@ export const Checkout = () => {
 
                 <PriceOrderLabel total="true">
                   <p>Total</p>
-                  <span>R$ 33,20</span>
+                    <span>R$ {totalCartValue + 3.5}</span>
                 </PriceOrderLabel>
               </PriceOrderResume>
 
@@ -104,6 +104,7 @@ export const Checkout = () => {
           </FormCard>
         </CheckoutOrder>
       </CheckoutForm>
+      )}
     </CheckoutContainer>
   )
 }
