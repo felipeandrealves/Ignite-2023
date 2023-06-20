@@ -92,7 +92,7 @@ export const FormCardGroup = styled.div<FormCardGroupProps>`
 `
 
 interface FormInputProps {
-  error?: boolean
+  error?: string
 }
 
 export const FormInput = styled.input<FormInputProps>`
