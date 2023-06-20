@@ -1,5 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Link } from 'react-router-dom'
 import * as zod from 'zod'
 
 import {
@@ -11,6 +12,7 @@ import {
   PaymentList,
   PriceOrderLabel,
   PriceOrderResume,
+  EmptyCartMessage,
 } from './styles'
 import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 import { PaymentCoffeeCard } from './components/PaymentCoffeeCard'
@@ -58,52 +60,64 @@ export const Checkout = () => {
 
   return (
     <CheckoutContainer>
-      <CheckoutForm action="" onSubmit={handleSubmit(handleCreateNewOrder)}>
-        <CheckoutOrder>
-          <p>Complete seu pedido</p>
+      {coffeeCart.length === 0 ? (
+        <EmptyCartMessage>
+          <h1>Voce ainda nao adicionou nenhum cafe no seu carrinho</h1>
+          <p>Continue navegando e adicione novos iten antes que esfriem</p>
 
-          <FormProvider {...buyCoffeeForm}>
-            <BuyCoffeeForm />
-          </FormProvider>
-        </CheckoutOrder>
+          <Link to="/">
+            <ConfirmOrderButton type="button">
+              quero meu cafe
+            </ConfirmOrderButton>
+          </Link>
+        </EmptyCartMessage>
+      ) : (
+        <CheckoutForm action="" onSubmit={handleSubmit(handleCreateNewOrder)}>
+          <CheckoutOrder>
+            <p>Complete seu pedido</p>
 
-        <CheckoutOrder>
-          <p>Cafés selecionados</p>
+            <FormProvider {...buyCoffeeForm}>
+              <BuyCoffeeForm />
+            </FormProvider>
+          </CheckoutOrder>
 
-          <FormCard variant="payment">
-            <PaymentList>
-              {coffeeCart.map((coffee) => (
-                <>
+          <CheckoutOrder>
+            <p>Cafés selecionados</p>
+
+            <FormCard variant="payment">
+              <PaymentList>
+                {coffeeCart.map((coffee) => (
+                  <>
                     <PaymentCoffeeCard {...coffee} />
 
-                  <div className="divider" />
-                </>
-              ))}
+                    <div className="divider" />
+                  </>
+                ))}
 
-              <PriceOrderResume>
-                <PriceOrderLabel>
-                  <p>Total de itens</p>
+                <PriceOrderResume>
+                  <PriceOrderLabel>
+                    <p>Total de itens</p>
                     <span>R$ {totalCartValue}</span>
-                </PriceOrderLabel>
+                  </PriceOrderLabel>
 
-                <PriceOrderLabel>
-                  <p>Entrega</p>
-                  <span>R$ 3,50</span>
-                </PriceOrderLabel>
+                  <PriceOrderLabel>
+                    <p>Entrega</p>
+                    <span>R$ 3,50</span>
+                  </PriceOrderLabel>
 
-                <PriceOrderLabel total="true">
-                  <p>Total</p>
+                  <PriceOrderLabel total="true">
+                    <p>Total</p>
                     <span>R$ {totalCartValue + 3.5}</span>
-                </PriceOrderLabel>
-              </PriceOrderResume>
+                  </PriceOrderLabel>
+                </PriceOrderResume>
 
-              <ConfirmOrderButton type="submit">
-                confirmar pedido
-              </ConfirmOrderButton>
-            </PaymentList>
-          </FormCard>
-        </CheckoutOrder>
-      </CheckoutForm>
+                <ConfirmOrderButton type="submit">
+                  confirmar pedido
+                </ConfirmOrderButton>
+              </PaymentList>
+            </FormCard>
+          </CheckoutOrder>
+        </CheckoutForm>
       )}
     </CheckoutContainer>
   )
