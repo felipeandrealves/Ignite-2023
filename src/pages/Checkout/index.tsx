@@ -35,7 +35,7 @@ const BuyCoffeeFormValidationSchema = zod.object({
 export type BuyCoffeeFormData = zod.infer<typeof BuyCoffeeFormValidationSchema>
 
 export const Checkout = () => {
-  const { coffeeCart, totalCartValue } = useCoffeeContext()
+  const { coffeeCart, totalCartValue, createNewOrder } = useCoffeeContext()
 
   const buyCoffeeForm = useForm<BuyCoffeeFormData>({
     resolver: zodResolver(BuyCoffeeFormValidationSchema),
@@ -56,7 +56,7 @@ export const Checkout = () => {
   const { handleSubmit, formState } = buyCoffeeForm
 
   const handleCreateNewOrder = (data: BuyCoffeeFormData) => {
-    console.log(data)
+    createNewOrder(data)
   }
 
   return (
