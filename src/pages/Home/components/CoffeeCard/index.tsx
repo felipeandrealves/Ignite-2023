@@ -7,13 +7,11 @@ import {
   CoffeeCardFooterBuyCoffeeButton,
   CoffeeLabels,
 } from './styles'
-import {
-  Coffee,
-  useCoffeeContext,
-} from '../../../../common/contexts/CoffeeContext'
 import { QuantityCounter } from '../../../../common/components/QuantityCounter'
+import { useCoffeeContext } from '../../../../common/contexts/CoffeeContext'
+import { CoffeeData } from '../../../../common/reducers/coffees/reducer'
 
-interface CoffeeCardProps extends Coffee {}
+interface CoffeeCardProps extends CoffeeData {}
 
 export const CoffeeCard = ({
   type,
@@ -61,7 +59,12 @@ export const CoffeeCard = ({
 
       <CoffeeCardFooter>
         <p>
-          R$ <span>{price}</span>
+          R$
+          <span>
+            {new Intl.NumberFormat('pt-br', {
+              minimumFractionDigits: 2,
+            }).format(price)}
+          </span>
         </p>
 
         <div>
