@@ -7,17 +7,19 @@ import {
   Price,
   RemoveCoffeeButton,
 } from './styles'
-import {
-  CoffeeCart,
-  useCoffeeContext,
-} from '../../../../common/contexts/CoffeeContext'
 import { QuantityCounter } from '../../../../common/components/QuantityCounter'
+import { useCoffeeContext } from '../../../../common/contexts/CoffeeContext'
+import { Coffee } from '../../../../common/reducers/coffees/reducer'
 
-export const PaymentCoffeeCard = ({ amount, type, price, id }: CoffeeCart) => {
-  const { removeCoffeeFromCart } = useCoffeeContext()
+export const PaymentCoffeeCard = ({ amount, type, price, id }: Coffee) => {
+  const { removeCoffeeFromCart, changeCoffeeAmount } = useCoffeeContext()
   const [coffeeAmount, setCoffeeAmount] = useState(amount)
 
   const handleChangeCoffeeAmount = (amount: number) => {
+    if (amount === 0) return removeCoffeeFromCart(id)
+
+    changeCoffeeAmount(id, amount)
+
     setCoffeeAmount(amount)
   }
 
