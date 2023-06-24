@@ -12,3 +12,4 @@ Descricao do coffe delivery
 [] - Recuperar informacoes do local storage de endereco do usuario
 [] - Exibir cidade e estado caso tenha alguma informacao salva no local storage
 [] - Finalizar layout da tela de sucesso
+[] - Dark mode (Optional)
