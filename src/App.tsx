@@ -1,11 +1,13 @@
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 import { CoffeeContextProvider } from './common/contexts/CoffeeContext'
 import { defaultTheme } from './common/styles/theme/default'
-// import { darkTheme } from './common/styles/theme/dark'
 import { GlobalStyle } from './common/styles/global'
 import { Router } from './Router'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 export const App = () => {
   return (
@@ -15,6 +17,7 @@ export const App = () => {
           <Router />
         </CoffeeContextProvider>
 
+        <ToastContainer />
         <GlobalStyle />
       </BrowserRouter>
     </ThemeProvider>
