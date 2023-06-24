@@ -7,9 +7,9 @@ Descricao do coffe delivery
 [X] - Utilizar useReducer nas funcoes do contexto
 [X] - Armazenar informacoes do carrinho no local storage
 [X] - Recuperar informacoes do local storage do carrinho
+[X] - Armazenar informacoes no local storage de endereco do usuario ao finalizar uma compra
+[X] - Recuperar informacoes do local storage de endereco do usuario
+[X] - Exibir cidade e estado caso tenha alguma informacao salva no local storage
 [] - Permitir a parmanecia na tela de sucesso apenas quando finalizar um pedido
-[] - Armazenar informacoes no local storage de endereco do usuario ao finalizar uma compra
-[] - Recuperar informacoes do local storage de endereco do usuario
-[] - Exibir cidade e estado caso tenha alguma informacao salva no local storage
 [] - Finalizar layout da tela de sucesso
 [] - Dark mode (Optional)
