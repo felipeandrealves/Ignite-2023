@@ -3,21 +3,25 @@ import {
   createContext,
   useContext,
   useEffect,
+  useReducer,
   useState,
 } from 'react'
 
+import {
+  addCoffeeToCartAction,
+  changeCoffeeAmountAction,
+  removeCoffeeAction,
+} from '../reducers/coffees/action'
+import { Coffee, CoffeeData, coffeeReducer } from '../reducers/coffees/reducer'
 import { coffees } from '../data/coffees.json'
 
-export type Coffee = (typeof coffees)[0]
-
-export type CoffeeCart = Coffee & { amount: number }
-
 interface CoffeeContextData {
-  availableCoffees: Coffee[]
-  coffeeCart: CoffeeCart[]
+  availableCoffees: CoffeeData[]
+  coffeeCart: Coffee[]
   totalCartValue: number
-  addCoffeeToCart: (coffee: CoffeeCart) => void
+  addCoffeeToCart: (coffee: Coffee) => void
   removeCoffeeFromCart: (coffeeId: string) => void
+  changeCoffeeAmount: (coffeeId: string, amount: number) => void
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextData)
@@ -29,28 +33,39 @@ interface CoffeeContextProviderProps {
 export const CoffeeContextProvider = ({
   children,
 }: CoffeeContextProviderProps) => {
+  const [coffeeState, dispatch] = useReducer(
+    coffeeReducer,
+    {
+      coffeeCart: [],
+    },
+    (initialState) => {
+      const storedStateAsJson = localStorage.getItem(
+        '@ignite-coffee-delivery:coffee-cart-state-1.0.0',
+      )
+
+      if (storedStateAsJson) {
+        return JSON.parse(storedStateAsJson)
+      }
+
+      return initialState
+    },
+  )
+
+  const { coffeeCart } = coffeeState
+
   const [availableCoffees] = useState<typeof coffees>(coffees)
-  const [coffeeCart, setCoffeeCart] = useState<CoffeeCart[]>([])
   const [totalCartValue, setTotalCartValue] = useState(0)
 
-  const addCoffeeToCart = (coffee: CoffeeCart) => {
-    const coffeeAlreadyExists = coffeeCart.find((item) => item.id === coffee.id)
-
-    if (coffeeAlreadyExists) {
-      setCoffeeCart(
-        coffeeCart.map((item) =>
-          item.id === coffee.id ? { ...coffee, amount: item.amount } : item,
-        ),
-      )
-    } else setCoffeeCart([...coffeeCart, { ...coffee }])
+  const addCoffeeToCart = (coffee: Coffee) => {
+    dispatch(addCoffeeToCartAction(coffee))
   }
 
   const removeCoffeeFromCart = (coffeeId: string) => {
-    const coffeeAlreadyExists = coffeeCart.find((item) => item.id === coffeeId)
+    dispatch(removeCoffeeAction(coffeeId))
+  }
 
-    if (coffeeAlreadyExists) {
-      setCoffeeCart(coffeeCart.filter((item) => item.id !== coffeeId))
-    }
+  const changeCoffeeAmount = (coffeeId: string, amount: number) => {
+    dispatch(changeCoffeeAmountAction(coffeeId, amount))
   }
 
   useEffect(() => {
@@ -62,13 +77,13 @@ export const CoffeeContextProvider = ({
       setTotalCartValue(totalAmount)
     }
 
-    const jsonCoffeeCart = JSON.stringify(coffeeCart)
+    const jsonCoffeeCart = JSON.stringify(coffeeState)
 
     localStorage.setItem(
-      '@ignite-coffeeDelivery:coffee-cart-state-1.0.0',
+      '@ignite-coffee-delivery:coffee-cart-state-1.0.0',
       jsonCoffeeCart,
     )
-  }, [coffeeCart])
+  }, [coffeeCart, coffeeState])
 
   return (
     <CoffeeContext.Provider
@@ -78,6 +93,7 @@ export const CoffeeContextProvider = ({
         addCoffeeToCart,
         totalCartValue,
         removeCoffeeFromCart,
+        changeCoffeeAmount,
       }}
     >
       {children}
