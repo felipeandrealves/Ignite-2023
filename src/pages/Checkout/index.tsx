@@ -53,7 +53,7 @@ export const Checkout = () => {
     },
   })
 
-  const { handleSubmit } = buyCoffeeForm
+  const { handleSubmit, formState } = buyCoffeeForm
 
   const handleCreateNewOrder = (data: BuyCoffeeFormData) => {
     console.log(data)
@@ -122,7 +122,10 @@ export const Checkout = () => {
                   </PriceOrderLabel>
                 </PriceOrderResume>
 
-                <ConfirmOrderButton type="submit">
+                <ConfirmOrderButton
+                  type="submit"
+                  disabled={formState.isSubmitting}
+                >
                   confirmar pedido
                 </ConfirmOrderButton>
               </PaymentList>
