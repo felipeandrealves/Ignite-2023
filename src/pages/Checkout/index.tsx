@@ -87,11 +87,11 @@ export const Checkout = () => {
             <FormCard variant="payment">
               <PaymentList>
                 {coffeeCart.map((coffee) => (
-                  <>
+                  <Fragment key={coffee.id}>
                     <PaymentCoffeeCard {...coffee} />
 
                     <div className="divider" />
-                  </>
+                  </Fragment>
                 ))}
 
                 <PriceOrderResume>
