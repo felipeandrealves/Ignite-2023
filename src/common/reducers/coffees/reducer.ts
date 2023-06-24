@@ -15,6 +15,16 @@ export const coffeeReducer = (state: CoffeeState, action: any) => {
   switch (action.type) {
     case ActionTypes.ADD_COFFEE_TO_CART:
       return produce(state, (draftState) => {
+        const coffeeAlreadyInCart = draftState.coffeeCart.findIndex(
+          (coffees) => coffees.id === action.payload.newCoffee.id,
+        )
+
+        if (coffeeAlreadyInCart !== -1) {
+          draftState.coffeeCart[coffeeAlreadyInCart].amount +=
+            action.payload.newCoffee.amount
+          return
+        }
+
         draftState.coffeeCart.push(action.payload.newCoffee)
       })
 
