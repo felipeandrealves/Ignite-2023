@@ -23,13 +23,13 @@ const BuyCoffeeFormValidationSchema = zod.object({
   address: zod.object({
     street: zod.string().min(3, 'Rua inválida'),
     number: zod.string().min(1, 'Número inválido'),
-    complement: zod.string().min(3, 'Complemento inválido'),
+    complement: zod.string().optional(),
     neighborhood: zod.string().min(3, 'Bairro inválido'),
     city: zod.string().min(3, 'Cidade inválida'),
     state: zod.string().min(2, 'Estado inválido'),
     zipCode: zod.string().min(8, 'CEP inválido'),
   }),
-  paymentType: zod.enum(['creditCard', 'debitCard', 'money']),
+  paymentType: zod.enum(['creditCard', 'debitCard', 'cash']),
 })
 
 export type BuyCoffeeFormData = zod.infer<typeof BuyCoffeeFormValidationSchema>
