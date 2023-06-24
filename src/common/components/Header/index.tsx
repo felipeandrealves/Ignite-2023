@@ -6,7 +6,7 @@ import { HeaderContainer, Location, ShoppingCartButton } from './styles'
 import { useCoffeeContext } from '../../contexts/CoffeeContext'
 
 export const Header = () => {
-  const { coffeeCart } = useCoffeeContext()
+  const { coffeeCart, address } = useCoffeeContext()
 
   return (
     <HeaderContainer>
@@ -15,10 +15,14 @@ export const Header = () => {
       </Link>
 
       <nav>
-        <Location>
-          <MapPin size={22} weight="fill" />
-          <p>Porto Alegre, RS</p>
-        </Location>
+        {address && (
+          <Location>
+            <MapPin size={22} weight="fill" />
+            <p>
+              {address.city}, {address.state}
+            </p>
+          </Location>
+        )}
 
         <Link to="/checkout">
           <ShoppingCartButton amount={coffeeCart.length}>
