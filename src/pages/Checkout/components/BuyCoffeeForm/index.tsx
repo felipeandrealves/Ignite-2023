@@ -6,6 +6,8 @@ import {
   Money,
 } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import {
   BuyCoffeeContainer,
@@ -16,10 +18,44 @@ import {
   FormCardHeaderTitle,
   FormInput,
 } from './styles'
+import { getCEP } from '../../../../common/services/viacep'
 import { BuyCoffeeFormData } from '../..'
 
+const debounce = (fn: Function, time: number) => {
+  setTimeout(() => fn(), time)
+}
+
 export const BuyCoffeeForm = () => {
-  const { register, formState } = useFormContext<BuyCoffeeFormData>()
+  const { register, formState, watch, setValue } =
+    useFormContext<BuyCoffeeFormData>()
+
+
+  const zipCodeWatch = watch('address.zipCode')
+
+  useEffect(() => {
+    if (zipCodeWatch?.length === 8) {
+      setIsFetching(true)
+
+      debounce(
+        () =>
+          getCEP(zipCodeWatch)
+            .then((cepReturned) => {
+              setValue('address.street', cepReturned.logradouro)
+              setValue('address.neighborhood', cepReturned.bairro)
+              setValue('address.city', cepReturned.localidade)
+              setValue('address.state', cepReturned.uf)
+              setValue('address.zipCode', cepReturned.cep)
+            })
+            .catch(() => {
+              toast.error('CEP nao encontrado', {
+                position: toast.POSITION.BOTTOM_CENTER,
+              })
+            })
+            .finally(() => setIsFetching(false)),
+        1000,
+      )
+    }
+  }, [setValue, zipCodeWatch])
 
   return (
     <BuyCoffeeContainer>
