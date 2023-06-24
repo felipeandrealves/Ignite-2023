@@ -29,6 +29,7 @@ export const BuyCoffeeForm = () => {
   const { register, formState, watch, setValue } =
     useFormContext<BuyCoffeeFormData>()
 
+  const [isFetching, setIsFetching] = useState(false)
 
   const zipCodeWatch = watch('address.zipCode')
 
@@ -75,6 +76,7 @@ export const BuyCoffeeForm = () => {
             size={200}
             placeholder="CEP"
             error={formState.errors.address?.zipCode?.message}
+            disabled={isFetching}
             {...register('address.zipCode')}
           />
 
@@ -82,6 +84,7 @@ export const BuyCoffeeForm = () => {
             type="text"
             placeholder="Rua"
             error={formState.errors.address?.street?.message}
+            disabled={isFetching}
             {...register('address.street')}
           />
 
@@ -106,6 +109,7 @@ export const BuyCoffeeForm = () => {
               type="text"
               placeholder="Bairro"
               error={formState.errors.address?.neighborhood?.message}
+              disabled={isFetching}
               {...register('address.neighborhood')}
             />
 
@@ -113,6 +117,7 @@ export const BuyCoffeeForm = () => {
               type="text"
               placeholder="Cidade"
               error={formState.errors.address?.city?.message}
+              disabled={isFetching}
               {...register('address.city')}
             />
 
@@ -120,6 +125,7 @@ export const BuyCoffeeForm = () => {
               type="text"
               placeholder="UF"
               error={formState.errors.address?.state?.message}
+              disabled={isFetching}
               {...register('address.state')}
             />
           </FormCardGroup>
