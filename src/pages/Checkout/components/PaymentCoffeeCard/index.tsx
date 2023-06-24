@@ -44,7 +44,12 @@ export const PaymentCoffeeCard = ({ amount, type, price, id }: CoffeeCart) => {
         </div>
       </CoffeeDescription>
 
-      <Price>R$ {price}</Price>
+      <Price>
+        {new Intl.NumberFormat('pt-br', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(price)}
+      </Price>
     </PaymentCoffeeCardContainer>
   )
 }
