@@ -34,7 +34,7 @@ export const BuyCoffeeForm = () => {
   const zipCodeWatch = watch('address.zipCode')
 
   useEffect(() => {
-    if (zipCodeWatch?.length === 8) {
+    if (zipCodeWatch?.length === 8 || zipCodeWatch?.length === 9) {
       setIsFetching(true)
 
       debounce(
