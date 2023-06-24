@@ -17,6 +17,7 @@ import {
 import { useCoffeeContext } from '../../common/contexts/CoffeeContext'
 import { PaymentCoffeeCard } from './components/PaymentCoffeeCard'
 import { BuyCoffeeForm } from './components/BuyCoffeeForm'
+import { Fragment } from 'react'
 
 const BuyCoffeeFormValidationSchema = zod.object({
   address: zod.object({
@@ -97,7 +98,12 @@ export const Checkout = () => {
                 <PriceOrderResume>
                   <PriceOrderLabel>
                     <p>Total de itens</p>
-                    <span>R$ {totalCartValue}</span>
+                    <span>
+                      {new Intl.NumberFormat('pt-br', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }).format(totalCartValue)}
+                    </span>
                   </PriceOrderLabel>
 
                   <PriceOrderLabel>
@@ -107,7 +113,12 @@ export const Checkout = () => {
 
                   <PriceOrderLabel total="true">
                     <p>Total</p>
-                    <span>R$ {totalCartValue + 3.5}</span>
+                    <span>
+                      {new Intl.NumberFormat('pt-br', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }).format(totalCartValue + 3.5)}
+                    </span>
                   </PriceOrderLabel>
                 </PriceOrderResume>
 
