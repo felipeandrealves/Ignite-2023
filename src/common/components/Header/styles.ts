@@ -84,3 +84,21 @@ export const ShoppingCartButton = styled.button<ShoppingCartButtonProps>`
     visibility: ${({ amount }) => (amount > 0 ? 'visible' : 'hidden')};
   }
 `
+
+export const ToggleThemeButton = styled.button`
+  border: none;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: ${({ theme }) => theme.colors['gray-500']};
+  color: ${({ theme }) => theme.colors['purple-500']};
+
+  cursor: pointer;
+`

@@ -1,12 +1,19 @@
-import { MapPin, ShoppingCart } from 'phosphor-react'
+import { MapPin, Moon, ShoppingCart, Sun, ToggleLeft } from 'phosphor-react'
 import { Link } from 'react-router-dom'
 
+import {
+  HeaderContainer,
+  Location,
+  ShoppingCartButton,
+  ToggleThemeButton,
+} from './styles'
 import CoffeeDeliveryLogo from '../../assets/images/CoffeeDeliveryLogo.svg'
-import { HeaderContainer, Location, ShoppingCartButton } from './styles'
 import { useCoffeeContext } from '../../contexts/CoffeeContext'
+import { useThemeContext } from '../../contexts/ThemeContext'
 
 export const Header = () => {
   const { coffeeCart, address } = useCoffeeContext()
+  const { toggleTheme, theme } = useThemeContext()
 
   return (
     <HeaderContainer>
@@ -23,6 +30,14 @@ export const Header = () => {
             </p>
           </Location>
         )}
+
+        <ToggleThemeButton onClick={toggleTheme}>
+          {theme === 'light' ? (
+            <Moon size={16} weight="fill" />
+          ) : (
+            <Sun size={16} weight="fill" />
+          )}
+        </ToggleThemeButton>
 
         <Link to="/checkout">
           <ShoppingCartButton amount={coffeeCart.length}>
