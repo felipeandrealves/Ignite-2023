@@ -17,8 +17,6 @@ export const Success = () => {
 
   const order = orders.find((order) => order.id === orderId)
 
-  console.log(order)
-
   if (!order) {
     return <h1>Pedido não encontrado</h1>
   }
