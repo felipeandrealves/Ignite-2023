@@ -1,7 +1,7 @@
 ![logo](./src/common/assets/images/CoffeeDeliveryLogo.svg)
 
 # ☕ Coffe delivery
-O desafio 
+O desafio proposto visa fixar conhecimentos e práticas aprendidos e desenvolvidos durante as aulas, sendo alguns deles: context, reducer, useEffect, entre outros. De forma bem sutil e didática conseguimos aplicar de forma automática todos os conceitos além de ir mais a fundo em alguns outros aspectos. Vários desafios foram aparecendo durando o desenvolvimento, varias dúvidas e problemas, porem cada vez mais que me aprofundava no desenvolvimento mais capacidade de resolver problemas eu ganhava. Boas práticas de códigos são pontos a se destacar no conhecimento passado pelas aulas.
 
 # 🚀 Getting Started
 
@@ -22,8 +22,7 @@ cd Ignite-2023-ReactJs
 
 ```bash
 pnpm install
-
-// Ou
+//OR
 pnpm i
 ```
 
