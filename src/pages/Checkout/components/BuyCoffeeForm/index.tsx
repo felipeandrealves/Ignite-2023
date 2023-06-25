@@ -170,11 +170,11 @@ export const BuyCoffeeForm = () => {
 
             <input
               type="radio"
-              id="money"
-              value="money"
+              id="cash"
+              value="cash"
               {...register('paymentType')}
             />
-            <label htmlFor="money">
+            <label htmlFor="cash">
               <Money size={16} />
               dinheiro
             </label>
