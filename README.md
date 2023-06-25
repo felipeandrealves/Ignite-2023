@@ -1,4 +1,4 @@
-![logo](./src/assets/images/logo-ignite.svg)
+![logo](./src/assets/img/logo-ignite.svg)
 
 # Criando SPA's com ReactJS (Ignite Timer ⏲️)
 Neste modulo aprendemos a lidar com contextos globais, reducer, e outros conceitos importantes dentro do ReactJS, a aplicação dos conceitos dentro do projeto e natural e bem fluida, com certeza sempre que precisar voltarei nesses módulos para refrescar o conhecimento adquirido. Aprendemos também a usar do local storage para armazenar as informações que queremos que se mantenham ao atualizar a página, usando o `useEffect` para auxiliar, e também para entender melhor suas aplicações e re-renderizações causadas pelo array de dependências, ajudando assim a melhorar o desempenho geral e evitando renderizações indesejadas.
