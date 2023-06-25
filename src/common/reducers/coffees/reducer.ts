@@ -13,6 +13,7 @@ export type Address = {
   city: string
   state: string
   zipCode: string
+  neighborhood: string
 
   complement?: string
 }
