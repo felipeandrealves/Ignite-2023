@@ -10,6 +10,5 @@ Descricao do coffe delivery
 [X] - Armazenar informacoes no local storage de endereco do usuario ao finalizar uma compra
 [X] - Recuperar informacoes do local storage de endereco do usuario
 [X] - Exibir cidade e estado caso tenha alguma informacao salva no local storage
-[] - Permitir a parmanecia na tela de sucesso apenas quando finalizar um pedido
-[] - Finalizar layout da tela de sucesso
-[] - Dark mode (Optional)
+[X] - Finalizar layout da tela de sucesso
+[X] - Permitir a parmanecia na tela de sucesso apenas quando finalizar um pedido
