@@ -1,1 +1,11 @@
-Vou criar uma descricao melhor ainda
+![]()
+
+
+# Branches scheme
+
+```
+└── main
+    └── @module-name/project-name-project-type
+```
+
+## Branch name description
