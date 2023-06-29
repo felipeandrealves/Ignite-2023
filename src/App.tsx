@@ -1,9 +1,14 @@
+import { ThemeProvider } from 'styled-components'
+
+import { defaultTheme } from './styles/theme/default'
+import { GlobalStyles } from './styles/global'
 
 export const App = () => {
-
   return (
-    <div>
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyles />
+
       <h1>Hello World</h1>
-    </div>
+    </ThemeProvider>
   )
 }
