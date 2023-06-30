@@ -3,6 +3,7 @@ import { MagnifyingGlass } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { useTransactions } from '../../../../contexts/TransactionsContext'
 import { SearchFormContainer } from './styles'
 
 const searchTransactionSchema = z.object({
@@ -12,6 +13,8 @@ const searchTransactionSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchTransactionSchema>
 
 export const SearchForm = () => {
+  const { fetchTransaction } = useTransactions()
+
   const {
     register,
     handleSubmit,
@@ -22,9 +25,7 @@ export const SearchForm = () => {
   })
 
   const handleSearchTransaction = async (data: SearchFormInputs) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    console.log(data)
+    await fetchTransaction(data.query)
 
     reset()
   }
