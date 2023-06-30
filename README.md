@@ -1,8 +1,12 @@
-<p align="center" style={{margin: '10px 0'}}>
+
+
+<p align="center">
     <a href="https://www.rocketseat.com.br/ignite">
         <img src="./assets/images/RocketIgnite.svg" />
     </a>
 </p>
+
+
 
 # Branches scheme
 
