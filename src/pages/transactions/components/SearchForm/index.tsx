@@ -5,6 +5,7 @@ import * as z from 'zod'
 
 import { useTransactions } from '../../../../contexts/TransactionsContext'
 import { SearchFormContainer } from './styles'
+import { memo } from 'react'
 
 const searchTransactionSchema = z.object({
   query: z.string(),
@@ -12,7 +13,7 @@ const searchTransactionSchema = z.object({
 
 type SearchFormInputs = z.infer<typeof searchTransactionSchema>
 
-export const SearchForm = () => {
+const SearchFormComponent = () => {
   const fetchTransaction = useTransactions(
     (context) => context.fetchTransaction,
   )
@@ -48,3 +49,5 @@ export const SearchForm = () => {
     </SearchFormContainer>
   )
 }
+
+export const SearchForm = memo(SearchFormComponent)
