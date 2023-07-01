@@ -13,7 +13,9 @@ const searchTransactionSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchTransactionSchema>
 
 export const SearchForm = () => {
-  const { fetchTransaction } = useTransactions()
+  const fetchTransaction = useTransactions(
+    (context) => context.fetchTransaction,
+  )
 
   const {
     register,

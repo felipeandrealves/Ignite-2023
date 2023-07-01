@@ -4,14 +4,14 @@ import {
   TransactionContent,
   TransactionsTable,
 } from './styles'
-import { useTransactions } from '../../contexts/TransactionsContext'
 import { currencyFormatter, dateFormatter } from '../../utils/formatter'
+import { useTransactions } from '../../contexts/TransactionsContext'
 import { SearchForm } from './components/SearchForm'
 import { Summary } from '../../components/Summary'
 import { Header } from '../../components/Header'
 
 export const Transactions = () => {
-  const { transactions } = useTransactions()
+  const transactions = useTransactions((context) => context.transactions)
 
   return (
     <TransactionContainer>
