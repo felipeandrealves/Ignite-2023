@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContextSelector } from 'use-context-selector'
+import React, { useEffect, useState } from 'react'
+
 import { api } from '../lib/axios'
 
 export interface Transaction {
@@ -64,4 +66,6 @@ export const TransactionsProvider = ({
   )
 }
 
-export const useTransactions = () => useContext(TransactionContext)
+export const useTransactions = <T,>(
+  fn: (context: TransactionsContextType) => T,
+) => useContextSelector(TransactionContext, fn)
