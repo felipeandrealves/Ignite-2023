@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Web Application for Github Blog
+  Web Application for Ignite Timer
 </h3>
 
 <p align="center">
