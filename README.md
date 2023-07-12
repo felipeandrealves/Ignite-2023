@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689123096/fxojrplsraeqmcvyst0c.png" width="100%" />  
+  <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689203246/Ignite%20ReactJS/chphlrofcksxsbxodyik.png" width="100%" />  
 </h1>
 
 <h3 align="center">
