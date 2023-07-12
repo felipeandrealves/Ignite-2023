@@ -1,4 +1,20 @@
-# Fundamentos ReactJs
+<h1 align="center">
+  <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689203246/Ignite%20ReactJS/nrp9fqvcom3rjpas3zi9.png" width="100%" />  
+</h1>
+
+<h3 align="center">
+  Web Application for Ignite Feed
+</h3>
+
+<p align="center">
+  <a href="#fundamentos-reactjs">Fundamentos ReactJs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">🚀 Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#fonte">Fonte</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#author">Author</a>
+</p>
+
+# Fundamentos ReactJs (Ignite Feed)
 
 Primeiro projeto desenvolvido durando as aulas do curso onde vários temas são abordados e trabalhados desde os fundamentos até colocar a mão na massa, começamos o projeto usando a ferramente [Vite](https://vitejs.dev/) que é muito poderosa e auxilia muito na criação de desenvolvimento de projetos, nas aulas também e abordado um pouco mais a fundo o funcionamento do ReactJs em si apresentando conceitos importantes como `SPA's`, `SSR`, `estados`, etc.
 
