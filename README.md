@@ -1,4 +1,20 @@
-# Fundamentos ReactJs
+<h1 align="center">
+  <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689203246/Ignite%20ReactJS/nrp9fqvcom3rjpas3zi9.png" width="100%" />  
+</h1>
+
+<h3 align="center">
+  Web Application for Ignite Feed
+</h3>
+
+<p align="center">
+  <a href="#fundamentos-reactjs">Fundamentos ReactJs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">🚀 Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#fonte">Fonte</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#author">Author</a>
+</p>
+
+# Fundamentos ReactJs (Ignite Feed)
 
 Este projeto e um aprimoramento do primeiro projeto desenvolvido no curso usando `Typescript`.
 
