@@ -1,4 +1,18 @@
-![logo](./src/common/assets/images/CoffeeDeliveryLogo.svg)
+<h1 align="center">
+  <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689203247/Ignite%20ReactJS/bnmcizfuxsa9q1kolrsr.png" width="100%" />  
+</h1>
+
+<h3 align="center">
+  Web Application for Coffe Delivery
+</h3>
+
+<p align="center">
+  <a href="#-coffe-delivery">☕ Coffe delivery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">🚀 Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#fonte">Fonte</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#author">Author</a>
+</p>
 
 # ☕ Coffe delivery
 O desafio proposto visa fixar conhecimentos e práticas aprendidos e desenvolvidos durante as aulas, sendo alguns deles: context, reducer, useEffect, entre outros. De forma bem sutil e didática conseguimos aplicar de forma automática todos os conceitos além de ir mais a fundo em alguns outros aspectos. Vários desafios foram aparecendo durando o desenvolvimento, varias dúvidas e problemas, porem cada vez mais que me aprofundava no desenvolvimento mais capacidade de resolver problemas eu ganhava. Boas práticas de códigos são pontos a se destacar no conhecimento passado pelas aulas.
