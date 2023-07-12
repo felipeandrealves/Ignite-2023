@@ -2,6 +2,10 @@
   <img src="https://res.cloudinary.com/dp1gjokad/image/upload/v1689123096/fxojrplsraeqmcvyst0c.png" width="100%" />  
 </h1>
 
+<h3 align="center">
+  Web Application for Github Blog
+</h3>
+
 <p align="center">
   <a href="#-github-blog">💲 😾 Github Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-getting-started">🚀 Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
