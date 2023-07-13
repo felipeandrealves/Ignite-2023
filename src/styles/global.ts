@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     line-height: 160%;
+    color: ${({ theme }) => theme.colors['base-text']};
   }
 
   body {
